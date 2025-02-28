@@ -1,0 +1,212 @@
+/* 공통 스타일 */
+body { 
+    text-align: center; 
+    font-family: Arial, sans-serif; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    flex-direction: column;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+/* 촬영 페이지 스타일 */
+#container { 
+    display: flex; 
+    justify-content: space-between; 
+    width: 95%;
+    max-width: 1200px;
+    background-color: transparent;
+    padding: 0;
+}
+
+#camera-container { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-right: 20px;
+    position: relative;
+    width: 800px; /* 명시적인 너비 설정 */
+    max-width: 100%; /* 모바일에서 화면을 넘어가지 않도록 */
+    box-sizing: border-box; /* 패딩을 너비에 포함 */
+}
+
+#video-wrapper {
+    width: 100%; /* 컨테이너에 맞춤 */
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+video { 
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#canvas {
+    display: none;
+    width: 100%; /* 비디오와 동일한 크기로 설정 */
+    height: 500px; /* 비디오 래퍼와 동일한 높이 */
+}
+
+#capture-btn {
+    padding: 12px 24px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+#capture-btn:hover {
+    background-color: #45a049;
+}
+
+#photo-preview { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    width: 220px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.preview-title {
+    font-size: 24px;
+    color: #333;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* 부드러운 그림자 */
+    margin: 0 0 15px 0; /* 아래쪽 여백 */
+    letter-spacing: 1px; /* 글자 간격 */
+}
+
+.photo-frame { 
+    width: 180px; 
+    height: 500px; 
+    background-color: black; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    padding: 5px; 
+    justify-content: space-evenly; 
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.photo-frame img { 
+    width: 150px; 
+    height: auto; 
+    max-height: 110px;
+    object-fit: contain; 
+    margin: 2px 0;
+}
+
+.color-buttons { 
+    display: none; 
+    margin-top: 10px; 
+}
+
+/* Retake Button */
+#retake-btn {
+    background: linear-gradient(135deg, #FFC107, #FFA000); /* Yellow-orange gradient */
+    color: rgb(252, 252, 252);
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover 효과 */
+#retake-btn:hover {
+    background: linear-gradient(135deg, #FFB300, #FF6F00); /* Darker orange */
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* 버튼 클릭 시 애니메이션 */
+#retake-btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#download-btn, #share-btn { 
+    display: none; 
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 140px;
+    font-size: 14px;
+}
+
+#download-btn:hover {
+    background-color: #0b7dda;
+}
+
+#share-btn {
+    background-color: #ff9800;
+    margin-top: 5px;
+}
+
+#share-btn:hover {
+    background-color: #e68a00;
+}
+
+#home-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 8px 16px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* 모바일 대응 */
+@media (max-width: 1000px) {
+    #container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    #camera-container {
+        margin-right: 0;
+        margin-bottom: 20px;
+        width: 90%;
+    }
+    
+    #video-wrapper {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4/3;
+        max-height: 60vh;
+    }
+    
+    #photo-preview {
+        width: 90%;
+    }
+}

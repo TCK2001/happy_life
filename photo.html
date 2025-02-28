@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Booth - Capture</title>
+    <link rel="stylesheet" href="photo.css">
+</head>
+<body>
+    <div id="container">
+        <a href="index.html" id="home-btn">Home</a>
+        <div id="camera-container">
+            <div id="video-wrapper">
+                <video id="video" autoplay playsinline></video>
+            </div>
+            <button id="capture-btn">Capture Photo</button>
+            <canvas id="canvas"></canvas>
+        </div>
+        <div id="photo-preview">
+            <h2 class="preview-title">Preview</h2>
+            <div class="photo-frame" id="photo-frame"></div>
+            <div class="color-buttons">
+                <input type="color" id="color-picker">
+            </div>
+            <button id="retake-btn">Retake</button> <!-- Added Retake Button -->
+            <button id="download-btn">Download</button>
+            <button id="share-btn">Share</button>
+        </div>        
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="photo.js"></script>
+</body>
+</html>

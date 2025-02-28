@@ -40,6 +40,7 @@ body {
 #video-wrapper {
     width: 100%; /* 컨테이너에 맞춤 */
     height: 500px;
+    aspect-ratio: 16 / 9;
     position: relative;
     overflow: hidden;
     border: 2px solid black;
@@ -186,27 +187,82 @@ video {
     text-decoration: none;
 }
 
-/* 모바일 대응 */
-@media (max-width: 1000px) {
+/* 📱 모바일 최적화 */
+@media (max-width: 768px) {
     #container {
         flex-direction: column;
         align-items: center;
+        width: 100%;
+    }
+
+    /* 🏠 홈 버튼 - 항상 최상단 유지 */
+    #home-btn {
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        padding: 10px 16px;
+        background-color: #333;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        z-index: 10; /* 다른 요소들 위에 위치 */
     }
     
+    /* 📷 카메라 영역 */
     #camera-container {
-        margin-right: 0;
+        width: 100%;
+        max-width: 400px;
+        margin-top: 500px;
         margin-bottom: 20px;
-        width: 90%;
+        padding: 15px;
     }
-    
+
+    /* 🎥 비디오 화면 */
     #video-wrapper {
         width: 100%;
-        height: auto;
-        aspect-ratio: 4/3;
-        max-height: 60vh;
+        max-height: 250px; /* 촬영 화면이 너무 크지 않도록 제한 */
+        aspect-ratio: 16 / 9;
     }
-    
+
+    video {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    /* 📸 촬영 버튼 */
+    #capture-btn {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+
+    /* 🖼️ 미리보기 영역 */
     #photo-preview {
         width: 90%;
+        max-width: 400px;
+        padding: 15px;
+        margin-bottom: 20px; /* 여백 추가 */
+    }
+
+    /* 📷 사진 프레임 */
+    .photo-frame {
+        width: 160px;
+        height: 400px;
+    }
+
+    .photo-frame img {
+        width: 130px;
+        max-height: 90px;
+        object-fit: contain;
+    }
+
+    /* 📥 다운로드 & 공유 & Retake 버튼 */
+    #download-btn, #share-btn, #retake-btn {
+        width: 120px;
+        font-size: 14px;
+        padding: 8px 14px;
+        margin-bottom: 10px; /* 버튼 간 간격 추가 */
     }
 }

@@ -75,6 +75,25 @@ video {
     background-color: #45a049;
 }
 
+#flip-camera-btn {
+    padding: 12px 24px;
+    background-color: #ff9800;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+#flip-camera-btn:hover {
+    background-color: #e68a00;
+}
+
+video {
+    transition: transform 0.3s ease; /* 부드러운 전환 효과 */
+}
+
 #photo-preview { 
     display: flex; 
     flex-direction: column; 

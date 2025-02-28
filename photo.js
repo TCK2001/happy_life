@@ -9,10 +9,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const homeBtn = document.getElementById('home-btn');
     const colorPicker = document.getElementById('color-picker');
     const retakeBtn = document.getElementById('retake-btn'); // Retake Button
+    const flipCameraBtn = document.getElementById('flip-camera-btn'); // 카메라 전환 버튼 추가
 
     let photoCount = 0;
     const maxPhotos = 4;
     const photosTaken = [];
+    let isFlipped = false; // 좌우 반전 상태 추적
 
     // 요소 확인
     if (!video || !canvas || !captureBtn) {
@@ -29,7 +31,8 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(stream => {
                 video.srcObject = stream;
                 video.onloadedmetadata = () => {
-                    console.log(`Video resolution: ${video.videoWidth}x${video.videoHeight}`);
+                    console.log(`Camera flipped: ${isFlipped}`);
+                    video.style.transform = isFlipped ? 'scaleX(-1)' : 'scaleX(1)'; // 초기 반전 상태 적용
                 };
             })
             .catch(err => {
@@ -43,6 +46,20 @@ document.addEventListener('DOMContentLoaded', function () {
         if (video.srcObject) {
             video.srcObject.getTracks().forEach(track => track.stop());
         }
+    }
+
+    // 카메라 좌우 반전 함수
+    function flipCamera() {
+        isFlipped = !isFlipped; // 반전 상태 토글
+        console.log('Flipping camera, isFlipped:', isFlipped);
+        video.style.transform = isFlipped ? 'scaleX(-1)' : 'scaleX(1)'; // CSS로 반전 적용
+    }
+
+    // 카메라 전환 버튼 이벤트
+    if (flipCameraBtn) {
+        flipCameraBtn.addEventListener('click', flipCamera);
+    } else {
+        console.warn('flip-camera-btn not found in the DOM.');
     }
 
     // 사진 촬영 함수

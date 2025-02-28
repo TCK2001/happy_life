@@ -257,6 +257,11 @@ video {
         padding: 10px 20px;
     }
 
+    #flip-camera-btn {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+
     /* 🖼️ 미리보기 영역 */
     #photo-preview {
         width: 90%;

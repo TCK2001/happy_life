@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
         console.warn('flip-camera-btn not found in the DOM.');
     }
 
-    // 사진 촬영 함수
+    // 사진 촬영 함수 (반전 적용)
     captureBtn.addEventListener('click', function() {
         if (photoCount < maxPhotos) {
             const context = canvas.getContext('2d');
@@ -82,7 +82,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 sy = (video.videoHeight - sHeight) / 2;
             }
 
-            context.drawImage(video, sx, sy, sWidth, sHeight, 0, 0, canvas.width, canvas.height);
+            // 캔버스에 반전 적용
+            if (isFlipped) {
+                context.save(); // 현재 상태 저장
+                context.scale(-1, 1); // X축 반전
+                context.drawImage(video, sx, sy, sWidth, sHeight, -canvas.width, 0, canvas.width, canvas.height);
+                context.restore(); // 상태 복원
+            } else {
+                context.drawImage(video, sx, sy, sWidth, sHeight, 0, 0, canvas.width, canvas.height);
+            }
+
             const imgDataURL = canvas.toDataURL('image/jpeg');
             photosTaken.push(imgDataURL);
 
@@ -90,18 +99,17 @@ document.addEventListener('DOMContentLoaded', function () {
             img.src = imgDataURL;
             photoFrame.appendChild(img);
 
-            updatePreview(); // 미리보기 업데이트
-            photoCount++; // 👉 사진 개수 증가
+            updatePreview();
+            photoCount++;
 
-            updateButtons(); // 버튼 상태 업데이트
+            updateButtons();
 
             if (photoCount === maxPhotos) {
                 captureBtn.disabled = true;
                 colorButtons.style.display = 'block';
                 downloadBtn.style.display = 'block';
                 shareBtn.style.display = 'block';
-            }
-            else {
+            } else {
                 colorButtons.style.display = 'none';
                 downloadBtn.style.display = 'none';
                 shareBtn.style.display = 'none';

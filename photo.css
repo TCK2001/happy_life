@@ -233,7 +233,7 @@ video {
     #camera-container {
         width: 100%;
         max-width: 400px;
-        margin-top: 50px; /* 너무 위로 올라가지 않도록 조정 */
+        margin-top: 500px; /* 너무 위로 올라가지 않도록 조정 */
         margin-bottom: 20px;
         padding: 15px;
     }
@@ -272,13 +272,12 @@ video {
 
     /* 📷 사진 프레임 */
     .photo-frame {
-        width: 160px;
-        height: 400px;
-        overflow: hidden; /* 잘린 부분 숨김 */
+        width: 200px;
+        height: 600px;
     }
 
     .photo-frame img {
-        width: 100%; /* 프레임에 맞게 전체 너비 사용 */
+        width: 90%; /* 프레임에 맞게 전체 너비 사용 */
         height: auto; /* 비율 유지 */
         max-height: 22%; /* 4장이 들어가도록 최대 높이 제한 (400px / 4 ≈ 100px 조정) */
         object-fit: cover; /* 잘리지 않도록 */
